@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Dodger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area">
+            <div id="credits">
+                <span>MADE BY</span>
+                <span class="discord-tag"><strong>#TheHighPlane</strong></span>
+                <span>DISCORD</span>
+            </div>
+            <div class="lane" id="lane1"></div>
+            <div class="lane" id="lane2"></div>
+            <div class="lane" id="lane3"></div>
+            <div id="plane"></div>
+            <div id="score-display">Distance: 0</div>
+            <div id="instructions">
+                <p>Desktop: Use arrow keys ← →</p>
+                <p>Mobile: Touch left/right side</p>
+            </div>
+            <div id="game-over">
+                <h1>Game Over!</h1>
+                <p id="final-score">Distance: 0</p>
+                <button id="restart-btn">Fly Again</button>
+            </div>
+            <div id="level-up" class="hidden">
+                <h2 id="level-message"></h2>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
