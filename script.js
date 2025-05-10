@@ -1,4 +1,3 @@
-// Game elements
 const startScreen = document.getElementById('start-screen');
 const startBtn = document.getElementById('start-btn');
 const gameArea = document.getElementById('game-area');
@@ -10,7 +9,6 @@ const restartBtn = document.getElementById('restart-btn');
 const victoryScreen = document.getElementById('victory-screen');
 const victoryBtn = document.getElementById('victory-btn');
 
-// Game variables
 let score = 0;
 let gameSpeed = 5;
 let planePosition = 2; // 1, 2, or 3
@@ -19,21 +17,18 @@ let animationId;
 let obstacles = [];
 let clouds = [];
 let lastObstacleTime = 0;
-let obstacleInterval = 2000; // Start with slower spawn rate
+let obstacleInterval = 2000; 
 
-// Obstacle types with different properties
 const obstacleTypes = [
     { class: 'plane', speedMultiplier: 1, spawnChance: 0.4 },
     { class: 'bomb', speedMultiplier: 1.2, spawnChance: 0.3 },
     { class: 'rock', speedMultiplier: 0.8, spawnChance: 0.3 }
 ];
 
-// Initialize game
 function initGame() {
     startScreen.style.display = 'none';
     gameArea.classList.remove('hidden');
     
-    // Reset game state
     score = 0;
     gameSpeed = 5;
     planePosition = 2;
@@ -42,13 +37,10 @@ function initGame() {
     gameOverScreen.classList.add('hidden');
     victoryScreen.classList.add('hidden');
     
-    // Clear existing elements
     clearGameElements();
     
-    // Set up plane
     updatePlanePosition();
     
-    // Start game
     gameRunning = true;
     lastObstacleTime = Date.now();
     gameLoop();
@@ -77,23 +69,19 @@ function updatePlanePosition() {
     plane.style.top = `${gameArea.offsetHeight - plane.offsetHeight - 20}px`;
 }
 
-// Game loop
 function gameLoop() {
     if (!gameRunning) return;
     
-    // Move obstacles
     obstacles.forEach((obstacle, index) => {
         obstacle.y += gameSpeed * obstacle.speed;
         obstacle.element.style.top = `${obstacle.y}px`;
         
-        // Remove off-screen obstacles
         if (obstacle.y > gameArea.offsetHeight) {
             gameArea.removeChild(obstacle.element);
             obstacles.splice(index, 1);
         }
     });
     
-    // Move clouds
     clouds.forEach((cloud, index) => {
         cloud.y += gameSpeed * 0.3;
         cloud.element.style.top = `${cloud.y}px`;
@@ -104,17 +92,14 @@ function gameLoop() {
         }
     });
     
-    // Check collisions
     if (checkCollisions()) {
         gameOver();
         return;
     }
     
-    // Spawn new elements
     spawnObstacles();
     spawnClouds();
     
-    // Update score and check for victory
     score++;
     updateScore();
     
@@ -123,7 +108,6 @@ function gameLoop() {
         return;
     }
     
-    // Increase difficulty gradually
     if (score % 500 === 0) {
         gameSpeed += 0.2;
         if (obstacleInterval > 800) {
@@ -139,10 +123,8 @@ function spawnObstacles() {
     if (now - lastObstacleTime > obstacleInterval) {
         lastObstacleTime = now;
         
-        // Random lane (1-3)
         const lane = Math.floor(Math.random() * 3) + 1;
         
-        // Select random obstacle type
         const rand = Math.random();
         let type;
         for (const obstacleType of obstacleTypes) {
@@ -151,9 +133,8 @@ function spawnObstacles() {
                 break;
             }
         }
-        type = type || obstacleTypes[0]; // Default to first type
-        
-        // Create obstacle
+        type = type || obstacleTypes[0]; 
+  
         const obstacle = document.createElement('div');
         obstacle.className = `obstacle ${type.class}`;
         
@@ -238,7 +219,7 @@ function resetGame() {
     initGame();
 }
 
-// Event listeners
+
 startBtn.addEventListener('click', initGame);
 restartBtn.addEventListener('click', resetGame);
 victoryBtn.addEventListener('click', resetGame);
@@ -255,7 +236,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Touch controls for mobile
+
 let touchStartX = 0;
 
 gameArea.addEventListener('touchstart', (e) => {
