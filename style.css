@@ -19,7 +19,6 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Start Screen */
 #start-screen {
     position: absolute;
     width: 100%;
@@ -79,7 +78,6 @@ body {
     font-weight: bold;
 }
 
-/* Game Area */
 #game-area {
     position: relative;
     width: 100%;
@@ -102,7 +100,6 @@ body {
 #lane2 { left: 33.33%; }
 #lane3 { left: 66.66%; border-right: none; }
 
-/* Plane */
 #plane {
     position: absolute;
     width: 50px;
@@ -115,7 +112,6 @@ body {
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* Obstacles */
 .obstacle {
     position: absolute;
     width: 40px;
@@ -145,7 +141,6 @@ body {
     z-index: 1;
 }
 
-/* Score Display */
 #score-display {
     position: absolute;
     top: 10px;
@@ -158,7 +153,6 @@ body {
     z-index: 20;
 }
 
-/* Game Over Screen */
 #game-over {
     position: absolute;
     top: 0;
@@ -192,7 +186,6 @@ body {
     cursor: pointer;
 }
 
-/* Victory Screen */
 #victory-screen {
     position: absolute;
     top: 0;
@@ -239,7 +232,6 @@ body {
     cursor: pointer;
 }
 
-/* Animations */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
